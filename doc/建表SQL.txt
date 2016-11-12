@@ -1,0 +1,9 @@
+create database homework_3;
+
+use homework_3;
+
+create table song(id int not null auto_increment,name varchar(100) unique,primary key(id));
+
+create table finger(finger_id int not null auto_increment,f1 int not null,f2 int not null,dt int not null,primary key(finger_id,f1,f2,dt));
+
+create table songfinger(song_id int,finger_id int,offset int not null,foreign key(song_id) references song(id) on delete cascade,foreign key(finger_id) references finger(finger_id) on delete cascade);
