@@ -38,6 +38,7 @@ public class Fingerprint {
             for(int j = 0; j < 4096; j++){
                 a[j] = readData[i+i*4096];
             }
+            a = FFT.fft(a);
             read_data.add(a);
         }
 
