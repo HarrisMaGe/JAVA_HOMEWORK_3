@@ -1,9 +1,8 @@
 package Fingerprint;
 
-/**
- * Created by 镇宇 on 2016/11/8.
- */
+
 public class FFT {
+
     private static void bit_reverse(Complex[] y) {
         int i, j, k;
         for (i = 1, j = y.length / 2; i < y.length - 1; ++i) {

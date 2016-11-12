@@ -1,8 +1,6 @@
 package Fingerprint;
 
-/**
- * Created by 镇宇 on 2016/11/8.
- */
+
 public class Complex {
     private double a, b;
     public Complex(double _a, double _b) {
