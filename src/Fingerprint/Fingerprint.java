@@ -40,7 +40,7 @@ public class Fingerprint {
 
 
     //将文件处理传所得到的长double数组转化成长度为4096的多个数组
-    public ArrayList<int[]> divide(double[] readData){
+    public void divide(double[] readData){
         for(int i = 0; i < readData.length/4096; i++){
             double[] a = new double[4096];
             for(int j = 0; j < 4096; j++){
@@ -53,7 +53,6 @@ public class Fingerprint {
         for(int i = 0; i < read_data.size(); i++){
             this.append(read_data.get(i));
         }
-        return constel_data;
     }
 
     /**
@@ -71,16 +70,18 @@ public class Fingerprint {
          * TODO: Either find N frequencies with the highest amplitude(energy),
          * or find the frequency with the max energy within each interval.
          */
-        for(int i = 0; i < freqDomain.length; i++){
-            freq = (int)freqDomain[i];
-            if(freq > freqPeaks[0]){
+        for(int i = 0; i < freqDomain.length; i++) {
+            freq = (int) freqDomain[i];
+            if (freq > freqPeaks[0]) {
                 freqPeaks[0] = freq;
-            }else if(freq > freqPeaks[1]){
+            } else if (freq > freqPeaks[1]) {
                 freqPeaks[1] = freq;
-            }else if(freq > freqPeaks[2]){
+            } else if (freq > freqPeaks[2]) {
                 freqPeaks[2] = freq;
             }
         }
+
+        //中位数查找算法实现在BFPRT类中
 
         constel_data.add(freqPeaks);
     }
@@ -93,8 +94,7 @@ public class Fingerprint {
      *
      * @return
      */
-    public ArrayList<ShazamHash> combineHash(ArrayList<int[]> constel_data) {
-        this.constel_data=constel_data;
+    public ArrayList<ShazamHash> combineHash() {
         if (constel_data.size() < 3)
             throw new RuntimeException("Too few frequency peaks");
         ArrayList<ShazamHash> hashes = new ArrayList<>();
@@ -119,7 +119,7 @@ public class Fingerprint {
     }
 
     //计算每首歌的finger_id，存入数据库
-    public List setFinger_Id(String path,String name)throws IOException {
+    public List setFinger_Id(String path, String name)throws IOException {
         divide(read.getDoubles(path));
         read.deleteArray();
         List finger_id = new ArrayList();
@@ -129,10 +129,10 @@ public class Fingerprint {
         }
         int[][] song_finger = new int[finger_id.size()][3];
         for(int j =0;j<finger_id.size();j++){
-                song_finger[j][0]=openDB.getSongId(name);
-                song_finger[j][1]= (int)finger_id.get(j);
-                song_finger[j][2]=combineHash().get(j).offset;
-           openDB.insertToSongfinger(song_finger[j][0],song_finger[j][1],song_finger[j][2]);
+            song_finger[j][0]=openDB.getSongId(name);
+            song_finger[j][1]= (int)finger_id.get(j);
+            song_finger[j][2]=combineHash().get(j).offset;
+            openDB.insertToSongfinger(song_finger[j][0],song_finger[j][1],song_finger[j][2]);
         }
         openDB.close();
         return finger_id;
