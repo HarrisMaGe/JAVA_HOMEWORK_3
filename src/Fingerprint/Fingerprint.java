@@ -1,5 +1,10 @@
 package Fingerprint;
+import Database.OpenDB;
+import ReadFile.Read;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Fingerprint {
@@ -14,6 +19,9 @@ public class Fingerprint {
     private ArrayList<int[]> constel_data = new ArrayList<>();
     private int id;
 
+    Read read = new Read();
+    static String url = "jdbc:mysql://127.0.0.1:330/homework_3?useSSL=false";
+    OpenDB openDB = new OpenDB(url);
     /**
      * For songs about to add into DB
      * @param id
@@ -106,6 +114,26 @@ public class Fingerprint {
             }
         }
         return hashes;
+    }
+
+    //计算每首歌的finger_id，存入数据库
+    public List setFinger_Id(String path,String name)throws IOException {
+        divide(read.getDoubles(path));
+        read.deleteArray();
+        List finger_id = new ArrayList();
+        for(int i =0;i<combineHash().size();i++){
+            finger_id.add( (combineHash().get(i).dt<<18) |
+                    (combineHash().get(i).f1<<9) | combineHash().get(i).f2);
+        }
+        int[][] song_finger = new int[finger_id.size()][3];
+        for(int j =0;j<finger_id.size();j++){
+                song_finger[j][0]=openDB.getSongId(name);
+                song_finger[j][1]= (int)finger_id.get(j);
+                song_finger[j][2]=combineHash().get(j).offset;
+           openDB.insertToSongfinger(song_finger[j][0],song_finger[j][1],song_finger[j][2]);
+        }
+        openDB.close();
+        return finger_id;
     }
 
 }
