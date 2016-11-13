@@ -5,7 +5,7 @@ import java.io.*;
 /**
  * Created by MYC on 2016/11/9.
  */
-public class ReadTest {
+public class  ReadTest {
     public byte list[] = null;
     public double newlist[] = null;
 

@@ -40,7 +40,7 @@ public class Fingerprint {
 
 
     //将文件处理传所得到的长double数组转化成长度为4096的多个数组
-    public void divide(double[] readData){
+    public ArrayList<int[]> divide(double[] readData){
         for(int i = 0; i < readData.length/4096; i++){
             double[] a = new double[4096];
             for(int j = 0; j < 4096; j++){
@@ -53,6 +53,7 @@ public class Fingerprint {
         for(int i = 0; i < read_data.size(); i++){
             this.append(read_data.get(i));
         }
+        return constel_data;
     }
 
     /**
@@ -92,7 +93,8 @@ public class Fingerprint {
      *
      * @return
      */
-    public ArrayList<ShazamHash> combineHash() {
+    public ArrayList<ShazamHash> combineHash(ArrayList<int[]> constel_data) {
+        this.constel_data=constel_data;
         if (constel_data.size() < 3)
             throw new RuntimeException("Too few frequency peaks");
         ArrayList<ShazamHash> hashes = new ArrayList<>();
