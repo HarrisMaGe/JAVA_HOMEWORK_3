@@ -1,4 +1,5 @@
 package Fingerprint;
+
 import Database.OpenDB;
 import ReadFile.Read;
 
@@ -70,18 +71,16 @@ public class Fingerprint {
          * TODO: Either find N frequencies with the highest amplitude(energy),
          * or find the frequency with the max energy within each interval.
          */
-        for(int i = 0; i < freqDomain.length; i++) {
-            freq = (int) freqDomain[i];
-            if (freq > freqPeaks[0]) {
+        for(int i = 0; i < freqDomain.length; i++){
+            freq = (int)freqDomain[i];
+            if(freq > freqPeaks[0]){
                 freqPeaks[0] = freq;
-            } else if (freq > freqPeaks[1]) {
+            }else if(freq > freqPeaks[1]){
                 freqPeaks[1] = freq;
-            } else if (freq > freqPeaks[2]) {
+            }else if(freq > freqPeaks[2]){
                 freqPeaks[2] = freq;
             }
         }
-
-        //中位数查找算法实现在BFPRT类中
 
         constel_data.add(freqPeaks);
     }
@@ -119,23 +118,32 @@ public class Fingerprint {
     }
 
     //计算每首歌的finger_id，存入数据库
-    public List setFinger_Id(String path, String name)throws IOException {
-        divide(read.getDoubles(path));
-        read.deleteArray();
-        List finger_id = new ArrayList();
-        for(int i =0;i<combineHash().size();i++){
-            finger_id.add( (combineHash().get(i).dt<<18) |
-                    (combineHash().get(i).f1<<9) | combineHash().get(i).f2);
+    public boolean setFinger_Id(String path,String name)throws IOException {
+        if (openDB.getSongId(name) == -1) {
+            return false;
+        } else {
+            divide(read.getDoubles(path));
+            read.deleteArray();
+            List finger_id = new ArrayList();
+            for (int i = 0; i < combineHash().size(); i++) {
+                finger_id.add((combineHash().get(i).dt << 18) |
+                        (combineHash().get(i).f1 << 9) | combineHash().get(i).f2);
+                //openDB.insertToSongfinger(openDB.getSongId(name), ((combineHash().get(i).dt << 18) |
+                //(combineHash().get(i).f1 << 9) | combineHash().get(i).f2), combineHash().get(i).offset);
+            }
+
+            int[][] song_finger = new int[finger_id.size()][3];
+            for (int j = 0; j < finger_id.size(); j++) {
+                song_finger[j][0] = openDB.getSongId(name);
+                song_finger[j][1] = (int) finger_id.get(j);
+                song_finger[j][2] = combineHash().get(j).offset;
+                openDB.insertToSongfinger(song_finger[j][0], song_finger[j][1], song_finger[j][2]);
+            }
+            openDB.close();
+             return true;
         }
-        int[][] song_finger = new int[finger_id.size()][3];
-        for(int j =0;j<finger_id.size();j++){
-            song_finger[j][0]=openDB.getSongId(name);
-            song_finger[j][1]= (int)finger_id.get(j);
-            song_finger[j][2]=combineHash().get(j).offset;
-            openDB.insertToSongfinger(song_finger[j][0],song_finger[j][1],song_finger[j][2]);
-        }
-        openDB.close();
-        return finger_id;
     }
 
 }
+
+

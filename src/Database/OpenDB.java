@@ -98,7 +98,23 @@ public String getSongName(int id){
             return id;
         }catch(Exception e){
             e.printStackTrace();
-            return 0;
+            return -1;
+        }
+    }
+    public int getSong_Id(){
+        try {
+            String str = "select * from songfinger where song_id=";
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(str);
+            int id = -1;
+            while(rs.next()) {
+                id = rs.getInt("id");
+            }
+            rs.close();
+            return id;
+        }catch(Exception e){
+            e.printStackTrace();
+            return -1;
         }
     }
     //查询接口
@@ -114,6 +130,21 @@ public String getSongName(int id){
         return null;
     }
 
+    public int findOffsetAndSongId(int finger_id,int offset){
+        try {
+            String insql = "select song_id from songfinger where offset = "+String.valueOf(offset)+"and finger_id = "+String.valueOf(finger_id);
+            PreparedStatement pStmt = conn.prepareStatement(insql);
+            ResultSet rs = pStmt.executeQuery(insql);
+            int song_id = -1;
+            while(rs.next()) {
+                song_id = rs.getInt("song_id");
+            }
+            return song_id;
+        }catch(Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+    }
     public void close(){
         try {
             if (statement != null)

@@ -19,7 +19,7 @@ public class Main {
         openDB = new OpenDB(url);
                File file = new File("C:\\Users\\MYC\\IdeaProjects\\homework_3\\MusicSelect");
                String[] filelist = file.list();
-               for (int i = 0; i < filelist.length; i++) {
+               for (int i = 6; i < filelist.length; i++) {
                    openDB.insertToSong(filelist[i]);
                    Fingerprint fingerprint = new Fingerprint();
                    fingerprint.setFinger_Id("MusicSelect/"+filelist[i],filelist[i]);
