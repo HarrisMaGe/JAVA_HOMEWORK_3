@@ -1,5 +1,11 @@
 package Fingerprint;
+
+import Database.OpenDB;
+import ReadFile.Read;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Fingerprint {
@@ -14,6 +20,9 @@ public class Fingerprint {
     private ArrayList<int[]> constel_data = new ArrayList<>();
     private int id;
 
+    Read read = new Read();
+    static String url = "jdbc:mysql://127.0.0.1:330/homework_3?useSSL=false";
+    OpenDB openDB = new OpenDB(url);
     /**
      * For songs about to add into DB
      * @param id
@@ -32,7 +41,7 @@ public class Fingerprint {
 
 
     //将文件处理传所得到的长double数组转化成长度为4096的多个数组
-    public ArrayList<int[]> divide(double[] readData){
+    public void divide(double[] readData){
         for(int i = 0; i < readData.length/4096; i++){
             double[] a = new double[4096];
             for(int j = 0; j < 4096; j++){
@@ -45,7 +54,6 @@ public class Fingerprint {
         for(int i = 0; i < read_data.size(); i++){
             this.append(read_data.get(i));
         }
-        return constel_data;
     }
 
     /**
@@ -85,8 +93,7 @@ public class Fingerprint {
      *
      * @return
      */
-    public ArrayList<ShazamHash> combineHash(ArrayList<int[]> constel_data) {
-        this.constel_data=constel_data;
+    public ArrayList<ShazamHash> combineHash() {
         if (constel_data.size() < 3)
             throw new RuntimeException("Too few frequency peaks");
         ArrayList<ShazamHash> hashes = new ArrayList<>();
@@ -110,4 +117,33 @@ public class Fingerprint {
         return hashes;
     }
 
+    //计算每首歌的finger_id，存入数据库
+    public boolean setFinger_Id(String path,String name)throws IOException {
+        if (openDB.getSongId(name) == -1) {
+            return false;
+        } else {
+            divide(read.getDoubles(path));
+            read.deleteArray();
+            List finger_id = new ArrayList();
+            for (int i = 0; i < combineHash().size(); i++) {
+                finger_id.add((combineHash().get(i).dt << 18) |
+                        (combineHash().get(i).f1 << 9) | combineHash().get(i).f2);
+                //openDB.insertToSongfinger(openDB.getSongId(name), ((combineHash().get(i).dt << 18) |
+                //(combineHash().get(i).f1 << 9) | combineHash().get(i).f2), combineHash().get(i).offset);
+            }
+
+            int[][] song_finger = new int[finger_id.size()][3];
+            for (int j = 0; j < finger_id.size(); j++) {
+                song_finger[j][0] = openDB.getSongId(name);
+                song_finger[j][1] = (int) finger_id.get(j);
+                song_finger[j][2] = combineHash().get(j).offset;
+                openDB.insertToSongfinger(song_finger[j][0], song_finger[j][1], song_finger[j][2]);
+            }
+            openDB.close();
+             return true;
+        }
+    }
+
 }
+
+

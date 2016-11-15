@@ -8,9 +8,12 @@ import java.nio.ShortBuffer;
  * Created by MYC on 2016/11/9.
  */
 public class Read {
-
+    byte[] buffer;
+    byte[] newBytes;
+    short[] ss;
+    double[] d;
     //获得文件的字节信息
-    static byte[] fileInput(String path) throws IOException {
+    public byte[] fileInput(String path) throws IOException {
         File file = new File(path);
         if (!file.exists()) {
             throw new FileNotFoundException(path);
@@ -21,7 +24,7 @@ public class Read {
         try {
             bufferedInputStream = new BufferedInputStream(new FileInputStream(file));
             int buf_size = 1024;
-            byte[] buffer = new byte[buf_size];
+             this.buffer = new byte[buf_size];
             int len = 0;
             while ((len = bufferedInputStream.read(buffer, 0, buf_size)) != -1) {
                 byteArrayOutputStream.write(buffer, 0, len);
@@ -42,9 +45,9 @@ public class Read {
     }
 
     //删除前46个字节
-    static byte[] getDatabyte(byte[] b) {
+    public byte[] getDatabyte(byte[] b) {
 
-        byte[] newBytes = new byte[b.length - 46];
+         this.newBytes = new byte[b.length - 46];
         for (int i = 46; i < b.length; i++) {
 
             newBytes[i - 46] = b[i];
@@ -55,7 +58,7 @@ public class Read {
     }
 
     //byte TO short
-    static short[] toShort2(byte[] b) throws IOException {
+    public short[] toShort(byte[] b) throws IOException {
 
         int dataLength = b.length;
         int shortLength = dataLength / 2;
@@ -63,19 +66,19 @@ public class Read {
         ByteBuffer byteBuffer = ByteBuffer.wrap(b, 0, dataLength);
         ShortBuffer shortBuffer = byteBuffer.order(ByteOrder.LITTLE_ENDIAN).asShortBuffer();
 
-        short[] ss = new short[shortLength];
+         this.ss = new short[shortLength];
 
         shortBuffer.get(ss, 0, shortLength);
         return ss;
     }
 
     //short TO double
-    static double[] toDouble(short[] s)throws IOException {
-        PrintWriter out = new PrintWriter(new FileWriter(new File("test(2).csv")));
-        double[] d = new double[s.length];
+    public double[] toDouble(short[] s)throws IOException {
+        //PrintWriter out = new PrintWriter(new FileWriter(new File("test(2).csv")));
+        this.d = new double[s.length];
         for (int i = 0; i < s.length; i++) {
             d[i] = (double) s[i];
-            out.printf("%.2f,\n",d[i] );
+            //out.printf("%.2f,\n",d[i] );
         }
         return d;
 
@@ -98,10 +101,16 @@ public class Read {
         return ds;
     }*/
 
-    public static double[] getDoubles(String path) throws IOException {
+    public  double[] getDoubles(String path) throws IOException {
 
-        return toDouble(toShort2(getDatabyte(fileInput(path))));
+        return toDouble(toShort(getDatabyte(fileInput(path))));
 
+    }
+    public void deleteArray(){
+        this.buffer=null;
+        this.newBytes=null;
+        this.ss=null;
+        this.d=null;
     }
 }
 

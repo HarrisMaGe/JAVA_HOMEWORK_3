@@ -55,26 +55,74 @@ public class OpenDB {
             e.printStackTrace();
         }
     }
-
-    public void insertToFinger(int f1,int f2,int dt){
+//向songfinger表里插入song_id、finger_id、offset
+    public void insertToSongfinger(int id,int finger_id,int offset){
         try {
-            String insql = "insert into finger(f1,f2,dt)values(?,?,?)";
+            String insql = "insert into songfinger(song_id,finger_id,offset)values(?,?,?)";
             PreparedStatement pStmt = conn.prepareStatement(insql);
-            pStmt.setInt(1,f1);
-            pStmt.setInt(2,f2);
-            pStmt.setInt(3,dt);
+            pStmt.setInt(1,id);
+            pStmt.setInt(2,finger_id);
+            pStmt.setInt(3,offset);
             pStmt.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
         }
     }
-
-
+//获取对应id的歌曲名字
+public String getSongName(int id){
+    try {
+        Statement statement = conn.createStatement();
+        ResultSet rs = statement.executeQuery("select * from song where id="+String.valueOf(id));
+        String name =null;
+        while(rs.next()) {
+            name = rs.getString("name");
+        }
+        rs.close();
+        return rs.getString("name");
+    }catch(Exception e){
+        e.printStackTrace();
+        return null;
+    }
+}
+//获取对应歌曲名字的id
+    public int getSongId(String name){
+        try {
+            String str = "select * from song where name="+"\""+name+"\"";
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(str);
+            int id = -1;
+            while(rs.next()) {
+                id = rs.getInt("id");
+            }
+            rs.close();
+            return id;
+        }catch(Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+    }
+    public int getSong_Id(){
+        try {
+            String str = "select * from songfinger where song_id=";
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(str);
+            int id = -1;
+            while(rs.next()) {
+                id = rs.getInt("id");
+            }
+            rs.close();
+            return id;
+        }catch(Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+    }
     //查询接口
     public ResultSet find(String findsql){
         try {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(findsql);
+            rs.close();
             return rs;
         }catch(Exception e){
             e.printStackTrace();
@@ -82,6 +130,21 @@ public class OpenDB {
         return null;
     }
 
+    public int findOffsetAndSongId(int finger_id,int offset){
+        try {
+            String insql = "select song_id from songfinger where offset = "+String.valueOf(offset)+"and finger_id = "+String.valueOf(finger_id);
+            PreparedStatement pStmt = conn.prepareStatement(insql);
+            ResultSet rs = pStmt.executeQuery(insql);
+            int song_id = -1;
+            while(rs.next()) {
+                song_id = rs.getInt("song_id");
+            }
+            return song_id;
+        }catch(Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+    }
     public void close(){
         try {
             if (statement != null)
