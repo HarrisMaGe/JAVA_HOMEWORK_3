@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8209af95-27ff-457e-926d-877db86e136e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Matching/Score.java" afterPath="$PROJECT_DIR$/src/Matching/Score.java" />
     </list>
     <ignored path="homework_3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,8 +28,8 @@
       <file leaf-file-name="Fingerprint.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Fingerprint/Fingerprint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1245">
-              <caret line="87" column="74" selection-start-line="87" selection-start-column="74" selection-end-line="87" selection-end-column="74" />
+            <state relative-caret-position="1290">
+              <caret line="95" column="48" selection-start-line="95" selection-start-column="48" selection-end-line="95" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -69,12 +70,16 @@
       <file leaf-file-name="OpenDB.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Database/OpenDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1140">
-              <caret line="76" column="16" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
+            <state relative-caret-position="480">
+              <caret line="140" column="13" selection-start-line="140" selection-start-column="13" selection-end-line="140" selection-end-column="13" />
               <folding>
-                <marker date="1478935724254" expanded="true" signature="1292:1328" ph="insert into date_time... " />
-                <marker date="1478935724254" expanded="true" signature="1646:1677" ph="insert into song... " />
-                <marker date="1478935724254" expanded="true" signature="1995:2036" ph="insert into finger... " />
+                <marker date="1479184291012" expanded="true" signature="1292:1328" ph="insert into date_time... " />
+                <marker date="1479184291012" expanded="true" signature="1646:1677" ph="insert into song... " />
+                <marker date="1479184291012" expanded="true" signature="2051:2112" ph="insert into songfinger... " />
+                <marker date="1479184291012" expanded="true" signature="2563:2591" ph="select * fro... song" />
+                <marker date="1479184291012" expanded="true" signature="2952:2997" ph="select * fro... song" />
+                <marker date="1479184291012" expanded="true" signature="3439:3478" ph="select * fro... songfinger" />
+                <marker date="1479184291012" expanded="true" signature="4288:4376" ph="select song_... songfinger" />
               </folding>
             </state>
           </provider>
@@ -83,18 +88,28 @@
       <file leaf-file-name="ReadTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ReadFile/ReadTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1140">
-              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+            <state relative-caret-position="1125">
+              <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Read.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Read.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ReadFile/Read.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-481">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="135">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Database/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -112,11 +127,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Score.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Score.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Matching/Score.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="270">
+              <caret line="18" column="71" selection-start-line="18" selection-start-column="71" selection-end-line="18" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -153,6 +168,7 @@
         <option value="$PROJECT_DIR$/src/ReadFile/ReadTest.java" />
         <option value="$PROJECT_DIR$/src/Fingerprint/Fingerprint.java" />
         <option value="$PROJECT_DIR$/src/Matching/GetFingerprint.java" />
+        <option value="$PROJECT_DIR$/src/ReadFile/Read.java" />
         <option value="$PROJECT_DIR$/src/Matching/Score.java" />
       </list>
     </option>
@@ -173,8 +189,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -201,7 +217,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -292,23 +307,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="homework_3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="homework_3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -874,14 +876,16 @@
       <workItem from="1478956783223" duration="52000" />
       <workItem from="1479005484652" duration="1889000" />
       <workItem from="1479124707024" duration="14000" />
+      <workItem from="1479184515403" duration="664000" />
+      <workItem from="1479294615397" duration="4553000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17950000" />
+    <option name="totallyTimeSpent" value="23167000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -895,7 +899,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24659607" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24466951" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -956,13 +960,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Database/OpenDB.java</url>
-          <line>62</line>
+          <line>126</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Database/OpenDB.java</url>
-          <line>63</line>
+          <line>127</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
@@ -982,14 +986,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ReadFile/Read.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Database/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -1118,9 +1114,13 @@
         <state relative-caret-position="315">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
-            <marker date="1478935724254" expanded="true" signature="1292:1328" ph="insert into date_time... " />
-            <marker date="1478935724254" expanded="true" signature="1646:1677" ph="insert into song... " />
-            <marker date="1478935724254" expanded="true" signature="1995:2036" ph="insert into finger... " />
+            <marker date="1479184291012" expanded="true" signature="1292:1328" ph="insert into date_time... " />
+            <marker date="1479184291012" expanded="true" signature="1646:1677" ph="insert into song... " />
+            <marker date="1479184291012" expanded="true" signature="2051:2112" ph="insert into songfinger... " />
+            <marker date="1479184291012" expanded="true" signature="2563:2591" ph="select * fro... song" />
+            <marker date="1479184291012" expanded="true" signature="2952:2997" ph="select * fro... song" />
+            <marker date="1479184291012" expanded="true" signature="3439:3478" ph="select * fro... songfinger" />
+            <marker date="1479184291012" expanded="true" signature="4288:4376" ph="select song_... songfinger" />
           </folding>
         </state>
       </provider>
@@ -1217,9 +1217,13 @@
         <state relative-caret-position="874">
           <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
-            <marker date="1478935724254" expanded="true" signature="1292:1328" ph="insert into date_time... " />
-            <marker date="1478935724254" expanded="true" signature="1646:1677" ph="insert into song... " />
-            <marker date="1478935724254" expanded="true" signature="1995:2036" ph="insert into finger... " />
+            <marker date="1479184291012" expanded="true" signature="1292:1328" ph="insert into date_time... " />
+            <marker date="1479184291012" expanded="true" signature="1646:1677" ph="insert into song... " />
+            <marker date="1479184291012" expanded="true" signature="2051:2112" ph="insert into songfinger... " />
+            <marker date="1479184291012" expanded="true" signature="2563:2591" ph="select * fro... song" />
+            <marker date="1479184291012" expanded="true" signature="2952:2997" ph="select * fro... song" />
+            <marker date="1479184291012" expanded="true" signature="3439:3478" ph="select * fro... songfinger" />
+            <marker date="1479184291012" expanded="true" signature="4288:4376" ph="select song_... songfinger" />
           </folding>
         </state>
       </provider>
@@ -1312,14 +1316,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Fingerprint/Fingerprint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1245">
-          <caret line="87" column="74" selection-start-line="87" selection-start-column="74" selection-end-line="87" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Matching/GetFingerprint.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1345,22 +1341,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/OpenDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="76" column="16" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
-          <folding>
-            <marker date="1478935724254" expanded="true" signature="1292:1328" ph="insert into date_time... " />
-            <marker date="1478935724254" expanded="true" signature="1646:1677" ph="insert into song... " />
-            <marker date="1478935724254" expanded="true" signature="1995:2036" ph="insert into finger... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ReadFile/ReadTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+        <state relative-caret-position="1125">
+          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1375,21 +1359,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Matching/Score.java">
+    <entry file="file://$PROJECT_DIR$/src/ReadFile/Read.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="135">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/OpenDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="140" column="13" selection-start-line="140" selection-start-column="13" selection-end-line="140" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1479184291012" expanded="true" signature="1292:1328" ph="insert into date_time... " />
+            <marker date="1479184291012" expanded="true" signature="1646:1677" ph="insert into song... " />
+            <marker date="1479184291012" expanded="true" signature="2051:2112" ph="insert into songfinger... " />
+            <marker date="1479184291012" expanded="true" signature="2563:2591" ph="select * fro... song" />
+            <marker date="1479184291012" expanded="true" signature="2952:2997" ph="select * fro... song" />
+            <marker date="1479184291012" expanded="true" signature="3439:3478" ph="select * fro... songfinger" />
+            <marker date="1479184291012" expanded="true" signature="4288:4376" ph="select song_... songfinger" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ReadFile/Read.java">
+    <entry file="file://$PROJECT_DIR$/src/Fingerprint/Fingerprint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-481">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="1290">
+          <caret line="95" column="48" selection-start-line="95" selection-start-column="48" selection-end-line="95" selection-end-column="48" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Matching/Score.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="71" selection-start-line="18" selection-start-column="71" selection-end-line="18" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
