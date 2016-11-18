@@ -28,19 +28,12 @@ public class Test {
 
         try{
             rs=openDB.find(sql);
-            //rs = openDB.statement.executeQuery(sql);
             System.out.println("-----------------");
             System.out.println("执行结果如下所示:");
             System.out.println("-----------------");
             System.out.println("-----------------");
         // String name = null;
             while(rs.next()) {
-            //  name = rs.getString("name");
-            //name = new String(name.getBytes("utf8"),"utf8");
-            //URLEncoder.encode(name,"utf-8");
-            //System.out.println(rs.getString("stuid") + "\t" + URLEncoder.encode(name,"utf-8"));
-            //System.out.println(rs.getString("id") + "\t" + URLDecoder.decode(name,"utf-8")+"\t"+rs.getString("data_time"));
-            //URLDecoder.decode(name,"utf-8");
                 System.out.println(rs.getString("id")+"\t"+rs.getString("time"));
             }
             rs.close();

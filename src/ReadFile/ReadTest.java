@@ -79,12 +79,6 @@ public class ReadTest {
 
     public static void main(String[] args) throws IOException{
         out();
-        //read.setArray();
-        //read.ByteArray2DoubleArray(read.newlist,read.list);
-        //PrintWriter out = new PrintWriter(new FileWriter(new File("test(1).csv")));
-        //for (int i=0; i < read.newlist.length; ++i) {
-        //    out.printf("%.2f,\n", read.newlist[i]);
-        //}
         Read read = new Read();
         read.getDoubles("MusicDatabase/林俊杰 - 美人鱼.wav");
     }

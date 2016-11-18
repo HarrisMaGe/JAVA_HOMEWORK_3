@@ -13,8 +13,8 @@ public class OpenDB {
     //String url3 = "jdbc:mysql://127.0.0.1:330/songfinger?useSSL=false";
     String user = "root";
     String password = "19950228MAGE";
-    Connection conn = null;
     Statement statement = null;
+    public Connection conn = null;
 
     public OpenDB(String url) {
         try {
@@ -23,9 +23,8 @@ public class OpenDB {
             // 连接数据库
             Connection conn = DriverManager.getConnection(url, this.user, this.password);
             this.conn = conn;
-            if (!conn.isClosed())
-                System.out.println("Succeeded connecting to the Database!");
-            statement = conn.createStatement();
+            //if (!conn.isClosed())
+                //System.out.println("Succeeded connecting to the Database!");
         } catch (ClassNotFoundException e) {
             System.out.println("Sorry,can`t find the Driver!");
             e.printStackTrace();
@@ -68,17 +67,40 @@ public class OpenDB {
             e.printStackTrace();
         }
     }
+
+    public void insertToMatchsong(int id,int dif_offset){
+        try {
+            String insql = "insert into matchsong(song_id,dif_offset)values(?,?)";
+            PreparedStatement pStmt = conn.prepareStatement(insql);
+            pStmt.setInt(1,id);
+            pStmt.setInt(2,dif_offset);
+            pStmt.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    //删除matchsong表
+    public void deleteFromMatchsong(){
+        try {
+            String desql = "delete from matchsong";
+            PreparedStatement pStmt = conn.prepareStatement(desql);
+            pStmt.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 //获取对应id的歌曲名字
 public String getSongName(int id){
     try {
         Statement statement = conn.createStatement();
-        ResultSet rs = statement.executeQuery("select * from song where id="+String.valueOf(id));
+        ResultSet rs = statement.executeQuery("select * from song where id = "+String.valueOf(id));
         String name =null;
         while(rs.next()) {
             name = rs.getString("name");
         }
-        rs.close();
-        return rs.getString("name");
+       // rs.close();
+        return name;
     }catch(Exception e){
         e.printStackTrace();
         return null;
@@ -101,23 +123,7 @@ public String getSongName(int id){
             return -1;
         }
     }
-    public int getSong_Id(){
-        try {
-            String str = "select * from songfinger where song_id=";
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery(str);
-            int id = -1;
-            while(rs.next()) {
-                id = rs.getInt("id");
-            }
-            rs.close();
-            return id;
-        }catch(Exception e){
-            e.printStackTrace();
-            return -1;
-        }
-    }
-    //查询接口
+    //查询全部数据接口，用于输入时间的测试
     public ResultSet find(String findsql){
         try {
             Statement statement = conn.createStatement();
@@ -130,21 +136,6 @@ public String getSongName(int id){
         return null;
     }
 
-    public int findOffsetAndSongId(int finger_id,int offset){
-        try {
-            String insql = "select song_id from songfinger where offset = "+String.valueOf(offset)+"and finger_id = "+String.valueOf(finger_id);
-            PreparedStatement pStmt = conn.prepareStatement(insql);
-            ResultSet rs = pStmt.executeQuery(insql);
-            int song_id = -1;
-            while(rs.next()) {
-                song_id = rs.getInt("song_id");
-            }
-            return song_id;
-        }catch(Exception e){
-            e.printStackTrace();
-            return -1;
-        }
-    }
     public void close(){
         try {
             if (statement != null)

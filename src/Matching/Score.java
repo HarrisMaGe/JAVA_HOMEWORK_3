@@ -2,14 +2,10 @@ package Matching;
 
 import Database.OpenDB;
 
-import java.io.File;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 
 /**
  * Created by 冬至节 on 2016/11/12.
@@ -119,10 +115,9 @@ public class Score {
         return score;
     }
 
-    public static int[][] getHighest(ArrayList<int[]> arr){
+    public  int[][] getHighest(ArrayList<int[]> arr){
         Comparator<int[]> comparator = new Comparator<int[]>(){
             public int compare(int[] i1,int[] i2) {
-                //先排年龄
                 if(i1[1]>=i2[1]){
                     return -1;
                 }

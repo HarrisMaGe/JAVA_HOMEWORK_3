@@ -42,12 +42,18 @@ public class Fingerprint {
 
     //将文件处理传所得到的长double数组转化成长度为4096的多个数组
     public void divide(double[] readData){
+        /*
+        for(int i = 0; i<readData.length; i++){
+            System.out.printf(readData[i]+"\n");
+        }*/
         for(int i = 0; i < readData.length/4096; i++){
             double[] a = new double[4096];
             for(int j = 0; j < 4096; j++){
-                a[j] = readData[i+i*4096];
+                a[j] = readData[j+i*4096];
             }
+//            System.out.printf(a[i]+"\n");
             a = FFT.fft(a);
+           // System.out.printf(a[i]+"\n");
             read_data.add(a);
         }
 
@@ -71,7 +77,7 @@ public class Fingerprint {
          * TODO: Either find N frequencies with the highest amplitude(energy),
          * or find the frequency with the max energy within each interval.
          */
-        for(int i = 0; i < freqDomain.length; i++){
+        for(int i = 5; i < 501; i++){
             freq = (int)freqDomain[i];
             if(freq > freqPeaks[0]){
                 freqPeaks[0] = freq;
@@ -117,7 +123,7 @@ public class Fingerprint {
         return hashes;
     }
 
-    //计算每首歌的finger_id，存入数据库
+    //计算每首歌的finger_id，将song_id,finger_id,offset存入数据库
     public boolean setFinger_Id(String path,String name)throws IOException {
         if (openDB.getSongId(name) == -1) {
             return false;
@@ -126,10 +132,7 @@ public class Fingerprint {
             read.deleteArray();
             List finger_id = new ArrayList();
             for (int i = 0; i < combineHash().size(); i++) {
-                finger_id.add((combineHash().get(i).dt << 18) |
-                        (combineHash().get(i).f1 << 9) | combineHash().get(i).f2);
-                //openDB.insertToSongfinger(openDB.getSongId(name), ((combineHash().get(i).dt << 18) |
-                //(combineHash().get(i).f1 << 9) | combineHash().get(i).f2), combineHash().get(i).offset);
+                finger_id.add((combineHash().get(i).dt << 18) | (combineHash().get(i).f1 << 9) | combineHash().get(i).f2);
             }
 
             int[][] song_finger = new int[finger_id.size()][3];
@@ -143,7 +146,6 @@ public class Fingerprint {
              return true;
         }
     }
-
 }
 
 

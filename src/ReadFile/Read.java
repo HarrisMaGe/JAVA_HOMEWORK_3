@@ -74,11 +74,11 @@ public class Read {
 
     //short TO double
     public double[] toDouble(short[] s)throws IOException {
-        //PrintWriter out = new PrintWriter(new FileWriter(new File("test(2).csv")));
+       // PrintWriter out = new PrintWriter(new FileWriter(new File("test.csv")));
         this.d = new double[s.length];
         for (int i = 0; i < s.length; i++) {
-            d[i] = (double) s[i];
-            //out.printf("%.2f,\n",d[i] );
+            d[i] = (double) s[i];///Math.pow(2.0,15);
+           // out.printf("%.2f,\n",d[i] );
         }
         return d;
 
@@ -90,7 +90,7 @@ public class Read {
         int n = max / 4096;
         double[][] ds = new double[n][4096];
         PrintWriter out = new PrintWriter(new FileWriter(new File("test(2).csv")));
-        for (int counter = 0; counter < n; counter++) {
+        for (int counter = 0; counter  < n; counter++) {
             for (int i = 0; i < 4096; i++) {
                 if ((i + 4096 * counter) <= max) {
                     ds[counter][i] = d[i + 4096 * counter];
