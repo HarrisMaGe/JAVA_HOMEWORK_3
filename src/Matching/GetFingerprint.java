@@ -16,11 +16,11 @@ public class GetFingerprint {
     Read read=new Read();
     Fingerprint fp=new Fingerprint();
 
-    public ArrayList<ShazamHash> getFingerprint(String path) throws IOException {
+    /*public ArrayList<ShazamHash> getFingerprint(String path) throws IOException {
         return fp.combineHash(fp.divide(read.getDoubles(path)));
-    }
+    }*/
 
-    public int[][] Hashes(String path) throws IOException{
+    /*public int[][] Hashes(String path) throws IOException{
         ArrayList<ShazamHash> hashes =getFingerprint(path);
         int[][] h=new int[hashes.size()][3];
         for (int i=0;i<hashes.size();i++){
@@ -29,5 +29,5 @@ public class GetFingerprint {
             h[i][3]=hashes.get(i).offset;
         }
         return h;
-    }
+    }*/
 }

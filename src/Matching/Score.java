@@ -6,6 +6,9 @@ import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -114,5 +117,26 @@ public class Score {
         }
         int score=avil/all *100;
         return score;
+    }
+
+    public static int[][] getHighest(ArrayList<int[]> arr){
+        Comparator<int[]> comparator = new Comparator<int[]>(){
+            public int compare(int[] i1,int[] i2) {
+                //先排年龄
+                if(i1[1]>=i2[1]){
+                    return -1;
+                }
+                else{
+                    return 1;
+                }
+            }
+        };
+        Collections.sort(arr,comparator);
+        int highest[][] = new int[5][2];
+        for(int i=0;i<5;i++){
+            highest[i][0]=arr.get(i)[0];
+            highest[i][1]=arr.get(i)[1];
+        }
+        return highest;
     }
 }
