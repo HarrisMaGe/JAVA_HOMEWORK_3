@@ -9,3 +9,5 @@ create table song(id int not null auto_increment,name varchar(100) unique,primar
 //create table songfinger(song_id int,finger_id int,offset int not null,foreign key(song_id) //references song(id) on delete cascade,foreign key(finger_id) references finger(finger_id) //on delete cascade);
 
 create table songfinger(song_id int,finger_id int,offset int not null,foreign key(song_id) references song(id) on delete cascade);
+
+create table matchsong(song_id int,dif_offset int);
